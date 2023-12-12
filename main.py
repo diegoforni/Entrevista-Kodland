@@ -122,6 +122,7 @@ circle_x = WIDTH // 2
 circle_y = HEIGHT // 2
 circle_speed = 5
 
+
 # Create multiple avoider circles at the start of the game
 num_avoider_circles = 3
 avoider_circles = [create_avoider_circle() for _ in range(num_avoider_circles)]
@@ -134,12 +135,13 @@ seconds_passed = 0
 
 # Game over flag
 game_over = False
+game_won = False
 
 # Create a button for going back to the main menu
 menu_button = Button(WIDTH // 2 - 100, HEIGHT // 2 + 50, 200, 50, "Main Menu", "menu")
 
 # Main game loop
-while not in_menu and not game_over:
+while not in_menu and not game_over and not game_won:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             in_menu = True  # Go back to the main menu
@@ -182,11 +184,13 @@ while not in_menu and not game_over:
                     avoider_circles.remove(avoider_circle)
                     # Create two new circles
                     avoider_circles.extend([create_avoider_circle() for _ in range(2)])
+                    if eaten_count > 9:
+                        game_won = True
 
         # Decrease the size of the avoider circles by 1% each second
         current_time = pygame.time.get_ticks()
         elapsed_time = current_time - start_time
-        if elapsed_time >= 1000:  # 1000 milliseconds = 1 second
+        if elapsed_time >= 300:  # 1000 milliseconds = 1 second
             for avoider_circle in avoider_circles:
                 avoider_circle['radius'] *= 1.03  # Increase size by 3%
                 avoider_circle['direction'] = math.radians(random.uniform(0, 360))  # Choose a new random direction
@@ -212,6 +216,34 @@ while not in_menu and not game_over:
         clock.tick(FPS)
 
     # Game over loop
+while game_won:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            # Check if the quit button was clicked
+            if quit_button.rect.collidepoint(event.pos):
+                pygame.quit()
+                sys.exit()
+
+    # Clear the screen
+    screen.fill(WHITE)
+
+    # Display game over text
+    draw_text("Juego acabado, Ganaste!", WIDTH // 2, HEIGHT // 2 - 50)
+    draw_text(f"Puntos: 10", WIDTH // 2, HEIGHT // 2)
+
+
+    quit_button.draw()
+
+    # Update the display
+    pygame.display.flip()
+
+    # Cap the frame rate
+    clock.tick(FPS)
+
+
 # Game over loop
 while game_over:
     for event in pygame.event.get():
