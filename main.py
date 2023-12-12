@@ -103,6 +103,7 @@ while in_menu:
     # Clear the screen
     screen.fill(WHITE)
     draw_text("Intenta comer los círculos más chicos que tí!",WIDTH/2, 30 )
+    draw_text("Muevete con las flechas",WIDTH/2, 60 )
 
     # Draw buttons
     for button in buttons:
