@@ -43,7 +43,7 @@ class Button:
 
 # Function to create avoider circles
 def create_avoider_circle():
-    avoider_circle_size_factor = random.uniform(0.3, 1.5)
+    avoider_circle_size_factor = random.uniform(0.6, 0.96)
     avoider_circle_radius = int(player_circle_radius * avoider_circle_size_factor)
 
     # Generate a random color within the specified range
@@ -188,7 +188,7 @@ while not in_menu and not game_over:
         elapsed_time = current_time - start_time
         if elapsed_time >= 1000:  # 1000 milliseconds = 1 second
             for avoider_circle in avoider_circles:
-                avoider_circle['radius'] *= 0.99  # Decrease size by 1%
+                avoider_circle['radius'] *= 1.03  # Increase size by 3%
                 avoider_circle['direction'] = math.radians(random.uniform(0, 360))  # Choose a new random direction
             start_time = current_time  # Reset the timer
 

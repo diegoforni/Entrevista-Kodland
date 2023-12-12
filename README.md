@@ -1,3 +1,4 @@
+
 Este juego es mi recreación sencilla de https://www.polkadotgame.com/.
 El jugador controla un círculo negro o "agujero", mientras hay muchos otros en la pantalla moviendose aleatoriamente, el jugador, controlando el circulo negro con las flechas, tiene que "comer" o tocar los circulos de otros colores, que son de menor tamaño que el, pero si toca o intenta "comer" un círculo de mayor tamaño, el jugador pierde.
-La gracia de este juego, es que al "comer" a un circulo de menot tamaño, 2 nuevos aparecen, haciendo a este, un juego extremadamente caótico, le he agregado una simplificación al juego original, en esta versión, los círculos "enemigos" se achican con el tiempo
+La gracia de este juego, es que al "comer" a un circulo de menot tamaño, 2 nuevos aparecen, haciendo a este, un juego extremadamente caótico, le he agregado una simplificación al juego original, en esta versión, los círculos "enemigos" se hacen más grandes con el tiempo
